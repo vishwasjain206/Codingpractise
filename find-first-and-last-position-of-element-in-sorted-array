@@ -1,0 +1,49 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        
+       int i,j;
+        i=0;
+        j=nums.length - 1;
+        int find;
+        int first_pos = -1;
+        int last_pos = -1;
+        int output[] = {first_pos,last_pos};
+        
+        
+        while (i <= j)   
+        {
+           find = ((i+j)/2);
+            if (nums[find] == target)
+            {
+                
+                while (nums[find] == target)
+                {
+                    output[0] = find;
+                    if (find !=0)
+                    {find --;}
+                }
+                if (find !=0)
+                    find ++;
+                while (nums[find] == target)
+                {
+                    output[1] = find;
+                    find ++;
+                }
+                break;
+            }
+            
+            else if (target < nums[find])
+            {
+                //i = 0;
+                j = find - 1;
+            }
+            else
+            {
+                i = find + 1;
+                
+            }
+        }
+        return output;
+    
+    }
+}
