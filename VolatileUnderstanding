@@ -1,0 +1,29 @@
+package vishwas;
+
+public class VolatileUnderstanding
+{
+	volatile static int var = 0;
+public static void main (String [] args){
+
+	 
+	new Thread( () -> 
+							{
+							try {
+								Thread.sleep(10);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							var = 1;
+							}
+							).start();
+	
+	 new Thread( () -> 
+		{
+			int r = var;   
+			System.out.println(r);
+		}
+		).start();
+	
+}
+}
