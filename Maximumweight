@@ -1,0 +1,36 @@
+package com.vishwas.vishwasdemo;
+
+public class Maximumweight {
+	
+	 static int Findmaxcheeseweight(int cheeseblock[], int totalblocks)
+	    {
+	        int includingsum = cheeseblock[0];
+	        int excluding_sum = 0;
+	        int excluding_sum_new;
+	        int i;
+	 
+	        for (i = 1; i < totalblocks; i++)
+	        {
+	        
+	            excluding_sum_new = (includingsum > excluding_sum) ? includingsum : excluding_sum;
+	 
+	           
+	            includingsum = excluding_sum + cheeseblock[i];
+	            excluding_sum = excluding_sum_new;
+	        }
+	 
+	        
+	        return ((includingsum > excluding_sum) ? includingsum : excluding_sum);
+	    }
+	 
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+        int Cheeseweight[] = new int[]{8, 5, 10, 100, 10, 5};
+        System.out.println(Findmaxcheeseweight(Cheeseweight, Cheeseweight.length));
+		
+		
+	}
+
+}
